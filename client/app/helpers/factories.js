@@ -310,19 +310,26 @@ angular.module('app.helperFactories', [])
 .factory('RepNews', function($http) {
   function getRepNews(titleAndRepName) {
     return $http.post('/getRepNews', {titleAndRepName : titleAndRepName})
-                .then(function(newsData){
-                  return newsData.data.value;
-                }, function(error) {
-                  console.log(error);
-                });
+      .then(function(newsData){
+        return newsData.data.value;
+      }, function(error) {
+        console.log(error);
+      });
   }
   return {
     getRepNews : getRepNews
   }
 })
 .factory('Users', function($http) {
-
+  function signup(newUser) {
+    return $http.post('/signup', newUser)
+      .then(function(data){
+        return data;
+      }, function(error) {
+        console.log(error);
+      });
+  }
   return {
-
+    signup: signup
   }
 });
