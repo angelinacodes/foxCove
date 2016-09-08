@@ -19,6 +19,15 @@ angular.module('app.localResults', [])
     $state.go('home');
   };
 
+  $scope.login = function() {
+    $state.go('login');
+  };
+
+  $scope.signup = function() {
+    $state.go('signup');
+  };
+
+
   $scope.loadZip = function() {
     if ($scope.location.match(/^\d{5}$/)) { // Validate 5-digit input
       Location.getRepFromZip($scope.location)
