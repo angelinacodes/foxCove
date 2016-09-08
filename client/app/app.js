@@ -8,7 +8,8 @@ angular.module('foxCove', [
   'ui.router',
   'app.directives',
   'app.comments',
-  'd3directive'
+  'd3directive',
+  'app.users'
 ])
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
@@ -161,6 +162,18 @@ angular.module('foxCove', [
   //   templateUrl: 'app/comments/comments-view.html'
   // })
 
+<<<<<<< 67207ae926a0f2eff37186138f562153e55e696e
+=======
+  //testing out signup and login
+  .state('signup', {
+    templateUrl: 'app/users/signup.html',
+    url: '/signup/',
+  })
+  .state('login', {
+    templateUrl: 'app/users/login.html',
+    url: '/login/',
+  })
+>>>>>>> [feature]create signup and login pages structure
   .state('dev', {
     templateUrl: 'app/comments/comments-view.html',
     url: '/dev/',
