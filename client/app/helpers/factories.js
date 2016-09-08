@@ -328,8 +328,15 @@ angular.module('app.helperFactories', [])
   }
 })
 .factory('Users', function($http) {
-
+  function signup(newUser) {
+    return $http.post('/signup', newUser)
+      .then(function(data){
+        return data;
+      }, function(error) {
+        console.log(error);
+      });
+  }
   return {
-
+    signup: signup
   }
 });
