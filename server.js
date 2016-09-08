@@ -35,8 +35,8 @@ var getComments      = require('./server/modules/comments-modules/get-comments')
 var postComment      = require('./server/modules/comments-modules/post-comment');
 var deleteComment    = require('./server/modules/comments-modules/delete-comment');
 
-
-// //USERS MODULES
+//USERS MODULES
+var signup           = require('./server/modules/Users/signup');
 // var cookieParser     = require('cookie-parser');
 // var expressValidator = require('express-validator');
 // var flash            = require('connect-flash');
@@ -72,7 +72,7 @@ app.use(express.static(path.join(__dirname, '/client')));
 
 
 app.post('/signup', function(req, res){
-  
+  signup(req, res);
 })
 
 //============================================

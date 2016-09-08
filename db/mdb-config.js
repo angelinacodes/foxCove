@@ -67,15 +67,9 @@ db.saveUser = function(req, res) {
   })
 }
 
-db.checkUsername = function(req, res) {
-  var username = req.body.username;
+db.checkUsername = function(username, callback) {
   User.findOne({username: username}).exec(function(err, user){
-    // if(err) {
-      
-    // }
-    // else {
-    //   res.status(200).send("OK")
-    // }
+    callback(user)
   })
 }
 
