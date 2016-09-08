@@ -9,7 +9,6 @@ angular.module('app.comments', [])
       });
   };
   $scope.postComment = function(comment, username, page){
-
     if(comment && username){
       var timeNow = new Date();
       UserComments.postComment({page: page, content: comment, username: username, time: timeNow})

@@ -35,6 +35,16 @@ var getComments      = require('./server/modules/comments-modules/get-comments')
 var postComment      = require('./server/modules/comments-modules/post-comment');
 var deleteComment    = require('./server/modules/comments-modules/delete-comment');
 
+
+// //USERS MODULES
+// var cookieParser     = require('cookie-parser');
+// var expressValidator = require('express-validator');
+// var flash            = require('connect-flash');
+// var session          = require('express-session');
+// var passport         = require('passport');
+// var LocalStrategy    = require('passport-local').Strategy;
+
+
 var app = module.exports = express();
 
 app.use(bodyParser.json());
@@ -44,6 +54,28 @@ app.use(bodyParser.urlencoded({
 
 app.use(favicon(__dirname + '/client/images/favicon.ico'));
 app.use(express.static(path.join(__dirname, '/client')));
+
+
+//LOGIN STUFF=================================
+
+// //express sessions
+// app.use(session({
+//   secret: 'shhhh',
+//   saveUninitialized: true,
+//   resave: true
+// }))
+
+
+// //passport
+// app.use(passport.initialize());
+// app.use(passport.session());
+
+app.post('/signup', function(req, res){
+  
+})
+
+//============================================
+
 
 app.post('/getLocalReps', function(req, res){
     getLocalReps(req, res);
@@ -95,7 +127,7 @@ app.post('/getGeo', function(req, res) {
 });
 
 app.post('/getSalesTax', function(req, res) {
-  getSalesTax(req.body.zip, res.send.bind(res));
+  getSalesTax(req, res);
 });
 
 app.post('/getRepAffiliation', function(req, res) {
