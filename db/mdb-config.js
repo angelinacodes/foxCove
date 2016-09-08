@@ -73,6 +73,12 @@ db.checkUsername = function(username, callback) {
   })
 }
 
+db.checkPassword = function(username, password, callback) {
+  User.findOne({username: username}).exec(function(err, user){
+    return user.password === password ? callback(true) : callback(false)
+  })
+}
+
 //for comment db
 
 var commentSchema = mongoose.Schema({

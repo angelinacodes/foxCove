@@ -331,12 +331,23 @@ angular.module('app.helperFactories', [])
   function signup(newUser) {
     return $http.post('/signup', newUser)
       .then(function(data){
-        return data;
+        return data.data;
       }, function(error) {
         console.log(error);
       });
-  }
+  };
+
+  function login(username, password){
+    return $http.post('/login', {username: username, password: password})
+      .then(function(data){
+        return data.data;
+      }, function(error) {
+        console.log(error)
+      });
+  };
+
   return {
-    signup: signup
+    signup: signup,
+    login: login
   }
 });

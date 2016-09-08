@@ -1,13 +1,13 @@
 <div class="row"><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></div>
 
-<div class="row align-center " data-ng-controller="Comments" ng-init="getComments(pageName);">
+<div class="row align-center " data-ng-controller="Users" ng-init="">
   <h3 class="head">Login</h3>
   <div>
     <div class="graff">
 
     <input type="text" placeholder="enter your username" ng-model="user">
     <input type="password" placeholder="enter your password" ng-model="password">
-    <button ng-click="" class="callout">sign in</button>
+    <button ng-click="loginUser(user, password)" class="callout">sign in</button>
 
     </div>
   </div>

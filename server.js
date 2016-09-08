@@ -37,10 +37,12 @@ var deleteComment    = require('./server/modules/comments-modules/delete-comment
 
 //USERS MODULES
 var signup           = require('./server/modules/Users/signup');
+var login            = require('./server/modules/Users/login');
+
 // var cookieParser     = require('cookie-parser');
 // var expressValidator = require('express-validator');
 // var flash            = require('connect-flash');
-// var session          = require('express-session');
+var session          = require('express-session');
 // var passport         = require('passport');
 // var LocalStrategy    = require('passport-local').Strategy;
 
@@ -58,13 +60,14 @@ app.use(express.static(path.join(__dirname, '/client')));
 
 //LOGIN STUFF=================================
 
-// //express sessions
-// app.use(session({
-//   secret: 'shhhh',
-//   saveUninitialized: true,
-//   resave: true
-// }))
+//express sessions
+app.use(session({
+  secret: 'shhhh',
+  saveUninitialized: true,
+  resave: true
+}))
 
+var sess;
 
 // //passport
 // app.use(passport.initialize());
@@ -75,6 +78,15 @@ app.post('/signup', function(req, res){
   signup(req, res);
 })
 
+app.post('/checksess', function(req, res){
+  return req.session.username ? res.send(req.session.username) : req.send(null);
+})
+
+app.post('/login', function(req, res){
+  console.log("at post login")
+  login(req, res)
+
+})
 //============================================
 
 
