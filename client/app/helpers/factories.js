@@ -318,5 +318,11 @@ angular.module('app.helperFactories', [])
   }
   return {
     getRepNews : getRepNews
-  };
+  }
+})
+.factory('Users', function($http) {
+
+  return {
+
+  }
 });
