@@ -70,6 +70,7 @@ app.use(express.static(path.join(__dirname, '/client')));
 // app.use(passport.initialize());
 // app.use(passport.session());
 
+
 app.post('/signup', function(req, res){
   
 })
