@@ -2,7 +2,6 @@
 angular.module('app.comments', [])
 .controller('Comments', ['$scope', '$state', 'UserComments', function($scope, $state, UserComments) {
   $scope.getComments = function(page){
-    console.log("PAGE", page);
     UserComments.getComments(page)
       .then(function(comments){
         $scope.comments = comments;
@@ -10,12 +9,16 @@ angular.module('app.comments', [])
       });
   };
   $scope.postComment = function(comment, username, page){
-    console.log('posting!', comment, username, page);
-    var timeNow = new Date();
-    UserComments.postComment({page: page, content: comment, username: username, time: timeNow})
-      .then(function(data){
-        console.log(data);
-      });
+    if(comment && username){
+      var timeNow = new Date();
+      UserComments.postComment({page: page, content: comment, username: username, time: timeNow})
+        .then(function(data){
+          console.log(data)
+        })
+    }
+    else{
+      alert('please enter valid comment');
+    }
   };
   $scope.deleteComment = function(comment) {
     console.log("deleting!", comment)
