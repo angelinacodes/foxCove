@@ -128,7 +128,7 @@ app.post('/getGeo', function(req, res) {
 });
 
 app.post('/getSalesTax', function(req, res) {
-  getSalesTax(req, res);
+  getSalesTax(req.body.zip, res.send.bind(res));
 });
 
 app.post('/getRepAffiliation', function(req, res) {

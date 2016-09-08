@@ -37,12 +37,47 @@ var userSchema = mongoose.Schema({
     username: String,
     password: String,
     email: String,
+    defaultZip: String,
     following: {
         type: []
     }
 })
 
 var User = mongoose.model('User', userSchema);
+
+db.saveUser = function(req, res) {
+  var current = req.body;
+  var newUser = new User ({
+    firstname: current.firstname,
+    lastname: current.lastname,
+    username: current.username,
+    password: current.password,
+    email: current.email,
+    defaultZip: null,
+    following: []    
+  });
+
+  newUser.save(function(err, user) {
+    if(err) {
+      res.status(500).send(err);
+    }
+    else {
+      res.status(200).send(user)
+    }
+  })
+}
+
+db.checkUsername = function(req, res) {
+  var username = req.body.username;
+  User.findOne({username: username}).exec(function(err, user){
+    // if(err) {
+      
+    // }
+    // else {
+    //   res.status(200).send("OK")
+    // }
+  })
+}
 
 //for comment db
 
